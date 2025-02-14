@@ -10,7 +10,7 @@ services:
       - 5050:5050
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres?schema=public
-
+    command: ["sh", "-c", "npx prisma migrate dev --name init && npm start"]
   db:
     container_name: db
     image: postgres:12

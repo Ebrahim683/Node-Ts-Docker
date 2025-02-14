@@ -1,9 +1,10 @@
 FROM node:20
 WORKDIR /app
 COPY package*.json ./
-RUN yarn install || npm install
+RUN npm install
 COPY prisma ./prisma
 RUN npx prisma generate
 COPY . .
+RUN npm run build
 EXPOSE 5050
-CMD [ "yarn", "dev" ]
+CMD ["sh", "-c", "npx prisma migrate dev --name init && npm start"]
