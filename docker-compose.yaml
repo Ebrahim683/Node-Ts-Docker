@@ -3,6 +3,7 @@ version: "3.8"
 services:
   api:
     container_name: api
+    image: ebrahim683/node-with-ts-api:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,6 +11,8 @@ services:
       - 5050:5050
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres?schema=public
+    depends_on:
+      - db
     command: ["sh", "-c", "npx prisma migrate dev --name init && npm start"]
   db:
     container_name: db
