@@ -11,3 +11,8 @@ for push:
     2. docker login
     3. docker tag ebrahim683/node-with-ts-api:latest ebrahim683/node-with-ts-api:v1.0 // tagging
     4. push
+
+for pull: (also need to have the same compose.yaml file)
+    1. docker pull repository
+    2. docker compose up -d
+    3. docker start api
